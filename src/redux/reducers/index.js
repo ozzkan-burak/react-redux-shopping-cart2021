@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   productList: [],
-  filterProcess:"",
+  filterProcess: "",
+  orderProcess: "",
 }
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, productList: action.payload };
     case "FILTER_PROCESS":
       return { ...state, filterProcess: action.payload };
+    case "ORDER_PROCESS":
+      return { ...state, orderProcess: action.payload };
     default:
       return state;
   }
