@@ -19,15 +19,13 @@ const Filter = () => {
     const size = e.target.value
 
     dispatch(filterProcess(size));
-    setSize(size);
 
-    const test = products.filter(product => product.size.indexOf(size) >= 0)
-    console.log(test)
+    setSize(size);
 
   }
 
   const sortProducts = (sort) => {
-    console.log(sort.target.value);
+   // console.log(sort.target.value);
     setSort(sort.target.value);
   }
 

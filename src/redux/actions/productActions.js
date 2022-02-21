@@ -4,6 +4,7 @@ export const getProductList = () => dispatch => {
   axios("https://fakestoreapi.com/products")
       .then((res) => {
 
+        
         const newProducts = res.data.map(product => {
           const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
           const newRandom = Math.floor((Math.random() * 6));

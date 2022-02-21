@@ -5,30 +5,36 @@ import { getProductList } from "../redux/actions/productActions";
 
 const ProductList = () => {
 
+  const [productsList, setProductsList] = useState([]);
+
   //const [products, setProducts] = useState([]);
 
-  let products = useSelector(state => state.productList);
+  const products = useSelector(state => state.productList);
   const filterProcess = useSelector(state => state.filterProcess);
 
-  console.log(filterProcess)
+  // filterProcess.size = filterProcess.size ? filterProcess.size : "All";
+  // filterProcess.sort = filterProcess.sort ? filterProcess.sort : "Latest";
+
+  console.log({filterProcess})
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    test()
+    setProductsList(products)
+    productList()
     dispatch(getProductList()); 
   }, []);
 
   useEffect(()=>{
-    products = products.filter(product => product.size.indexOf(filterProcess) >= 0)
-    console.log(products)
-
-    console.log(newProductList)
+   const filteredProductList = products.filter(product => product.size.indexOf(filterProcess) >= 0)
+   setProductsList(filteredProductList)
+    console.log({filteredProductList})
   }, [filterProcess])
 
-  let newProductList;
 
-const test = () => {
-  return newProductList = products?.map((product) => (
+
+const productList = () => {
+  return  productsList?.map((product) => (
     <li key={product.id}>
       <div className="product">
         <a href={'#' + product.id}>
@@ -55,7 +61,7 @@ const test = () => {
   return (
     <div>
       <ul className="products">
-        {newProductList}
+        {productList}
       </ul>
     </div>
   );
